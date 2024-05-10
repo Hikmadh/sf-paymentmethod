@@ -20,7 +20,7 @@
 ![Screenshot 2024-05-10 171945](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/6fc01ec4-1006-401a-98a3-58694fa19ec3)
 
 
-### Create an Apex Class namely HitPayIntegration, to Enter the Code.
+### Create an Apex Class like HitPayIntegration, to Enter the Code.
 
 ![Screenshot 2024-05-10 183634](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/880961ea-faf5-489f-bcf9-81b8fbed1e3d)
 
@@ -40,12 +40,12 @@
 ![1](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/2eb90b78-c5dd-4530-8a2b-8036c1006a04)
 
 
-### If we want to display only the URL, then change the code format for that and the User Debug are seen like this.
+### If we want to display only the URL, then change the code format for that and the User Debug are look like this.
 
 ![2](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/9b32b06e-afb5-4abe-9106-2c5313628a47)
 
 
-### Now Create a Button namely Send Payment Request using Visualforce Page.
+### Now Create a Button like Send Payment Request using Visualforce Page.
 
 ![Screenshot 2024-05-10 185955](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/f345ada1-ebc4-4acb-a35b-2df1d4cbd68d)
 
@@ -87,6 +87,9 @@
 ### Here check the User Debug.
 
 ![8](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/9de327f8-b4a9-4671-a671-f2705759cee8)
+
+
+### This is the File that the Separation of this User Debug.
 
 ![9](https://github.com/Hikmadh/sf-paymentmethod/assets/154895071/5b9dc911-3645-4a7d-8248-349892a9e30e)
 
