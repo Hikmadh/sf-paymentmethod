@@ -1,0 +1,48 @@
+public class HitPayIntegrationController {
+
+  public String paymentUrl { get; set; }
+  public String paymentCurrency { get; set; }
+
+  public void sendPaymentRequest() {
+    String email = 'hikmadhthoubik@gmail.com';
+    String redirectUrl = System.Url.getOrgDomainUrl().toExternalForm();
+    String referenceNumber = 'REF123';
+    String webhookUrl = 'https://wise-panda-wwn9an-dev-ed.trailblaze.my.salesforce-sites.com/services/apexrest/hitpay/Webhook/v2';
+    paymentCurrency = 'SGD';
+    String amount = '1000';
+
+    try {
+      Http http = new Http();
+      HttpRequest req = new HttpRequest();
+      HttpResponse res = new HttpResponse();
+
+      req.setEndpoint('https://api.sandbox.hit-pay.com/v1/payment-requests');
+      req.setMethod('POST');
+      req.setHeader('X-BUSINESS-API-KEY', 'b286daabf9921b5a01a4621f026c7259e046f8911feba212996c92159b98427d');
+      req.setHeader('Content-Type', 'application/json');
+      req.setHeader('X-Requested-With', 'XMLHttpRequest');
+
+      String requestBody = JSON.serializePretty(new Map<String, Object>{
+          'email' => email,
+          'redirect_url' => redirectUrl,
+          'reference_number' => referenceNumber,
+          'webhook' => webhookUrl,
+          'currency' => paymentCurrency,
+          'amount' => amount
+      });
+      req.setBody(requestBody);
+
+      res = http.send(req);
+
+      if (res.getStatusCode() >= 200 && res.getStatusCode() < 300) {
+          Map<String, Object> jsonResponse = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
+          paymentUrl = (String) jsonResponse.get('url');
+          System.debug('Payment URL: ' + paymentUrl);
+      } else {
+          System.debug('HTTP request failed with status code: ' + res.getStatusCode() + ' and message: ' + res.getStatus());
+      }
+    } catch (Exception e) {
+      System.debug('Exception occurred: ' + e.getMessage());
+    }
+  }
+}

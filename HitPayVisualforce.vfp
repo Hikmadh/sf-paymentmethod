@@ -1,0 +1,5 @@
+<apex:page controller="HitPayIntegrationController">
+    <apex:form >
+        <apex:commandButton value="Send Payment Request" action="{!sendPaymentRequest}" oncomplete="window.open('{!paymentUrl}','_blank');" />
+    </apex:form>
+</apex:page>

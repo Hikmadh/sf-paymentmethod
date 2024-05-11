@@ -1,0 +1,32 @@
+public class HitPayIntegration {
+    public static void sendPaymentRequest() {
+        Http http = new Http();
+        HttpRequest req = new HttpRequest();
+        HttpResponse res = new HttpResponse();
+
+        req.setEndpoint('https://api.sandbox.hit-pay.com/v1/payment-requests');
+        req.setMethod('POST');
+        req.setHeader('X-BUSINESS-API-KEY', 'f5d54345544d31c216e0b23b8cb19a75a46cdf7d5e7ea7fac0ea5e35003b47ba');
+        req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        req.setHeader('X-Requested-With', 'XMLHttpRequest');
+
+        String body = 'email=hikmadhnoor@gmail.com' +
+                      '&redirect_url=https://hikmadh.com/success' +
+                      '&reference_number=REF123' +
+                      '&webhook=https://hikmadh.com/webhook' +
+                      '&currency=SGD' +
+                      '&amount=600';
+        req.setBody(body);
+
+        try {
+            res = http.send(req);
+            // Parse JSON response to extract URL
+            Map<String, Object> jsonResponse = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
+            String paymentUrl = (String) jsonResponse.get('url');
+            // Print the URL
+            System.debug('Payment URL: ' + paymentUrl);
+        } catch (Exception e) {
+            System.debug('Error: ' + e.getMessage());
+        }
+    }
+}
